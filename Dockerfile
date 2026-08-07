@@ -9,7 +9,7 @@ RUN apk add --no-cache libc6-compat
 COPY package.json pnpm-lock.yaml ./
 
 # Instalar pnpm globalmente
-RUN npm install -g pnpm@latest
+RUN npm install -g pnpm@9
 
 # Instalar dependências
 RUN pnpm install --frozen-lockfile
@@ -27,7 +27,7 @@ WORKDIR /app
 
 # Instalar dependências do sistema e pnpm
 RUN apk add --no-cache libc6-compat && \
-    npm install -g pnpm@latest
+    npm install -g pnpm@9
 
 # Criar usuário não-root para segurança
 RUN addgroup --system --gid 1001 nodejs && \
