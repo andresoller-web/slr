@@ -416,13 +416,10 @@ export default function Cases() {
             </Link>
           ))}
         {logoextra.map((item, index) => (
-          <Link
-            key={index}
-            href={{
-              pathname: "/cases",
-            }}
-            className="p-6 border-1 border-gray-400 rounded-lg md:grayscale-100 grayscale-0 hover:grayscale-0 transition-all duration-300 cursor-pointer hover:scale-105"
-          >
+<div
+              key={index}
+              className="p-6 border-1 border-gray-400 rounded-lg md:grayscale-100 grayscale-0 transition-all duration-300"
+                    >
             <div className="max-w-[180px] min-h-[100px] relative">
               <Image
                 src={item.img}
@@ -432,7 +429,7 @@ export default function Cases() {
                 className="object-contain"
               />
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </section>
