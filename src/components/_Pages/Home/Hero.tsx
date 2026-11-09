@@ -106,7 +106,7 @@ export default function Hero() {
           {/* Estatísticas */}
           <div className="flex items-start justify-between gap-4 max-w-7xl mx-auto left-0  w-full sm:pb-10 pb-15 md:px-8 px-2">
             <StatisticCounter
-              targetValue={7}
+              targetValue={8}
               suffix="+"
               text={t("hero.years")}
               delay={400}
