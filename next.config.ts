@@ -2,6 +2,11 @@ import { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
+  // /favicon.ico padrão aponta para o favicon da SLR (src/app/brand/[icon]/route.ts)
+  async rewrites() {
+    return [{ source: "/favicon.ico", destination: "/brand/favicon.ico" }];
+  },
+
   // Headers de segurança
   async headers() {
     return [
