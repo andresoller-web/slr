@@ -7,6 +7,28 @@ import Image from "next/image";
 import { useRef } from "react";
 import { useCounterAnimation } from "../../../hooks/useCounterAnimation";
 
+// Data de abertura da SLR Engenharia: 17/12/2018.
+// O contador mostra os anos completos de atuação e soma +1 automaticamente
+// todo dia 17/12 (ex.: 7 até 16/12/2026, 8 a partir de 17/12/2026).
+const FOUNDING_DATE = { year: 2018, month: 12, day: 17 };
+
+function getYearsOfOperation(now: Date = new Date()): number {
+  const [year, month, day] = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Sao_Paulo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  })
+    .format(now)
+    .split("-")
+    .map(Number);
+
+  const reachedAnniversary =
+    month > FOUNDING_DATE.month ||
+    (month === FOUNDING_DATE.month && day >= FOUNDING_DATE.day);
+  return year - FOUNDING_DATE.year - (reachedAnniversary ? 0 : 1);
+}
+
 // Componente para estatísticas com animação de contador
 function StatisticCounter({
   targetValue,
@@ -106,7 +128,7 @@ export default function Hero() {
           {/* Estatísticas */}
           <div className="flex items-start justify-between gap-4 max-w-7xl mx-auto left-0  w-full sm:pb-10 pb-15 md:px-8 px-2">
             <StatisticCounter
-              targetValue={8}
+              targetValue={getYearsOfOperation()}
               suffix="+"
               text={t("hero.years")}
               delay={400}
