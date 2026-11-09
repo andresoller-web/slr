@@ -89,7 +89,21 @@ export async function generateMetadata({
     title: metadataConfig.title,
     description: metadataConfig.description,
     icons: {
-      icon: "/logo.svg",
+      icon: [
+        {
+          url: "/brand/favicon.ico",
+          type: "image/x-icon",
+          sizes: "16x16 32x32 48x48",
+        },
+        { url: "/brand/icon-192.png", type: "image/png", sizes: "192x192" },
+      ],
+      apple: [
+        {
+          url: "/brand/apple-touch-icon.png",
+          type: "image/png",
+          sizes: "180x180",
+        },
+      ],
     },
     authors: [
       { name: "Anderson Dias Farias", url: "https://adfdeveloper.com.br" },
